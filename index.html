@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>Rock Paper scissor</title>
+
+</head>
+<body>
+    <script>
+
+        function getComputerChoice(){
+            let options=["rock","paper","scissor"];
+            return options[Math.floor(Math.random()*3)];
+        }
+        function getHumanChoice(){
+            let answer= prompt("Enter Rock Paper Scissor 321");  
+            return answer.toLowerCase(); 
+        }
+        let humanScore=0;
+        let computerScore=0;
+        function playRound(humanChoice, computerChoice){
+
+            if(humanChoice==="rock"){
+                if(computerChoice==="rock"){
+                    console.log("computer's choice:"+computerChoice);
+                    console.log("Both are same!");
+                }
+                else if(computerChoice==="paper"){
+                    console.log("computer's choice:"+computerChoice);
+                    console.log("Computer won human lose!");
+                    computerScore++;
+                }
+                else{
+                    console.log("computer's choice:"+computerChoice);
+                    console.log("Computer lose human won!");
+                    humanScore++;
+                }
+            }
+
+            if(humanChoice==="paper"){
+                if(computerChoice==="rock"){
+                    console.log("computer's choice:"+computerChoice);
+                    console.log("Computer lose human won!");
+                    humanScore++;
+                }
+                else if(computerChoice==="paper"){
+                    
+                    console.log("computer's choice:"+computerChoice);
+                    console.log("Both are same!");
+                }
+                else{
+                    console.log("computer's choice:"+computerChoice);
+                    console.log("Computer won human lose!");
+                    computerScore++;
+                }
+            }
+
+            if(humanChoice==="scissor"){
+                if(computerChoice==="rock"){
+                    console.log("computer's choice:"+computerChoice);
+                    console.log("Computer won human lose!");
+                    computerScore++;
+                }
+                else if(computerChoice==="paper"){
+                    console.log("computer's choice:"+computerChoice);
+                    console.log("Computer lose human won!");
+                    humanScore++;
+                }
+                else{
+                    console.log("computer's choice:"+computerChoice);
+                    console.log("Both are same!");
+                }
+            }
+        }
+        
+        function playGame(){
+            for(let i=0;i<5;i++){
+        let humanSelection=getHumanChoice();
+        let computerSelection=getComputerChoice();
+        playRound(humanSelection,computerSelection);
+        
+            }
+            console.log("computer score "+ computerScore, "human score: "+humanScore);
+        }
+        playGame();
+        
+    </script>
+
+</body>

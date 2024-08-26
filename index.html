@@ -14,6 +14,7 @@
         <button class="pbtn" value="paper">Paper</button>
         <button class="sbtn" value="scissor">Scissor</button>
     </div>
+    <div class="final-result"></div>
 </div>
     <script>
 
@@ -22,9 +23,10 @@
             console.log (options[Math.floor(Math.random()*3)]);
             return options[Math.floor(Math.random()*3)];
         }
-        const container=document.querySelector('.container')
+        const container=document.querySelector('.final-result');
         function getHumanChoice(){
              let humanChoice='';
+             let computerChoice='';
              const hchoice=document.querySelector('.humanChoice')
              const btnr= document.querySelector('.rbtn');
              const btnp= document.querySelector('.pbtn');
@@ -34,14 +36,20 @@
                 btnr.addEventListener('click',()=>{
                     humanChoice='rock';
                     choice.textContent="human choice is "+humanChoice;
+                    computerChoice=getComputerChoice();
+                    playRound(humanChoice,computerChoice);
                 })
                 btnp.addEventListener('click',()=>{
                     humanChoice='paper';
                     choice.textContent="human choice is "+humanChoice;
+                    computerChoice=getComputerChoice();
+                    playRound(humanChoice,computerChoice);
                 })
                 btns.addEventListener('click',()=>{
                     humanChoice='scissor';
                     choice.textContent="human choice is "+humanChoice;
+                    computerChoice=getComputerChoice();
+                    playRound(humanChoice,computerChoice);
                 })
              
         
@@ -50,7 +58,7 @@
 
 
         }
-        // getHumanChoice();
+        getHumanChoice();
         let humanScore=0;
         let computerScore=0;
         function playRound(humanChoice, computerChoice){
@@ -61,8 +69,9 @@
             result.append(cchoice);
             result.append(winner);
             result.append(scores);
+            container.innerHTML='';
             container.append(result);
-            // result.style.border="1px solid black";
+            
             if(humanChoice==="rock"){
                 if(computerChoice==="rock"){
                     cchoice.textContent="computer's choice:"+computerChoice;
@@ -121,9 +130,7 @@
         }
        
        
-        let humanSelection=getHumanChoice();
-        let computerSelection=getComputerChoice();
-        playRound(humanSelection,computerSelection);
+        
  
       
         

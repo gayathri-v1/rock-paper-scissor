@@ -8,83 +8,124 @@
 
 </head>
 <body>
+    <div class="container">
+    <div class="humanChoice">
+        <button class="rbtn" value="rock">Rock</button>
+        <button class="pbtn" value="paper">Paper</button>
+        <button class="sbtn" value="scissor">Scissor</button>
+    </div>
+</div>
     <script>
 
         function getComputerChoice(){
             let options=["rock","paper","scissor"];
+            console.log (options[Math.floor(Math.random()*3)]);
             return options[Math.floor(Math.random()*3)];
         }
+        const container=document.querySelector('.container')
         function getHumanChoice(){
-            let answer= prompt("Enter Rock Paper Scissor 321");  
-            return answer.toLowerCase(); 
+             let humanChoice='';
+             const hchoice=document.querySelector('.humanChoice')
+             const btnr= document.querySelector('.rbtn');
+             const btnp= document.querySelector('.pbtn');
+             const btns= document.querySelector('.sbtn');
+             const choice= document.createElement('div');
+             hchoice.append(choice);
+                btnr.addEventListener('click',()=>{
+                    humanChoice='rock';
+                    choice.textContent="human choice is "+humanChoice;
+                })
+                btnp.addEventListener('click',()=>{
+                    humanChoice='paper';
+                    choice.textContent="human choice is "+humanChoice;
+                })
+                btns.addEventListener('click',()=>{
+                    humanChoice='scissor';
+                    choice.textContent="human choice is "+humanChoice;
+                })
+             
+        
+
+
+
+
         }
+        // getHumanChoice();
         let humanScore=0;
         let computerScore=0;
         function playRound(humanChoice, computerChoice){
-
+            const result= document.createElement('div');
+            const cchoice=document.createElement('p');
+            const winner=document.createElement('p');
+            const scores=document.createElement('p');
+            result.append(cchoice);
+            result.append(winner);
+            result.append(scores);
+            container.append(result);
+            // result.style.border="1px solid black";
             if(humanChoice==="rock"){
                 if(computerChoice==="rock"){
-                    console.log("computer's choice:"+computerChoice);
-                    console.log("Both are same!");
+                    cchoice.textContent="computer's choice:"+computerChoice;
+                    winner.textContent="Both are same!";
                 }
                 else if(computerChoice==="paper"){
-                    console.log("computer's choice:"+computerChoice);
-                    console.log("Computer won human lose!");
+                    cchoice.textContent="computer's choice:"+computerChoice;
+                    winner.textContent="Computer won human lose!";
                     computerScore++;
                 }
                 else{
-                    console.log("computer's choice:"+computerChoice);
-                    console.log("Computer lose human won!");
+                    cchoice.textContent="computer's choice: "+computerChoice;
+                    winner.textContent="Computer lose human won!";
                     humanScore++;
                 }
             }
 
             if(humanChoice==="paper"){
                 if(computerChoice==="rock"){
-                    console.log("computer's choice:"+computerChoice);
-                    console.log("Computer lose human won!");
+                    cchoice.textContent="computer's choice:"+computerChoice;
+                    winner.textContent="Computer lose human won!";
                     humanScore++;
                 }
                 else if(computerChoice==="paper"){
                     
-                    console.log("computer's choice:"+computerChoice);
-                    console.log("Both are same!");
+                    cchoice.textContent="computer's choice:"+computerChoice;
+                    winner.textContent="Both are same!";
                 }
                 else{
-                    console.log("computer's choice:"+computerChoice);
-                    console.log("Computer won human lose!");
+                    cchoice.textContent="computer's choice:"+computerChoice;
+                    winner.textContent="Computer won human lose!";
                     computerScore++;
                 }
             }
 
             if(humanChoice==="scissor"){
                 if(computerChoice==="rock"){
-                    console.log("computer's choice:"+computerChoice);
-                    console.log("Computer won human lose!");
+                    cchoice.textContent="computer's choice:"+computerChoice;
+                    winner.textContent="Computer won human lose!";
                     computerScore++;
                 }
                 else if(computerChoice==="paper"){
-                    console.log("computer's choice:"+computerChoice);
-                    console.log("Computer lose human won!");
+                    cchoice.textContent="computer's choice:"+computerChoice;
+                    winner.textContent="Computer lose human won!";
                     humanScore++;
                 }
                 else{
-                    console.log("computer's choice:"+computerChoice);
-                    console.log("Both are same!");
+                    cchoice.textContent="computer's choice:"+computerChoice;
+                    winner.textContent="Both are same!";
                 }
             }
+           
+            scores.textContent="computer score "+ computerScore+ " human score: "+humanScore;
+
+
         }
-        
-        function playGame(){
-            for(let i=0;i<5;i++){
+       
+       
         let humanSelection=getHumanChoice();
         let computerSelection=getComputerChoice();
         playRound(humanSelection,computerSelection);
-        
-            }
-            console.log("computer score "+ computerScore, "human score: "+humanScore);
-        }
-        playGame();
+ 
+      
         
     </script>
 
